@@ -21,6 +21,22 @@ class UserController
         $view->display();
     }
 
+    public function login() {
+        $view = new View('user/login');
+        $view->display();
+    }
+
+    public function registration() {
+        $view = new View('user/registration');
+        $view->title = 'Benutzer erstellen';
+        $view->heading = 'Benutzer erstellen';
+        $view->display();
+    }
+
+    public function registrate() {
+        
+    }
+
     public function create()
     {
         $view = new View('user/create');
