@@ -1,13 +1,54 @@
     </main>
 
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">&copy; ICT Berufsbildungcenter AG 2016</span>
-      </div>
-    </footer>
+    <!-- Footer -->
+    <footer class="page-footer font-small blue pt-4" style="color: white; background-color: #333;">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-  </body>
-</html>
+      <!-- Footer Links -->
+      <div class="container-fluid text-center text-md-left">
+
+        <!-- Grid row -->
+        <div class="row justify-content-between" style="align-items: center">
+
+          <!-- Grid column -->
+          <div class="col-md-6 mt-md-0 mt-3">
+
+            <!-- Content -->
+            <h5 class="text-uppercase">Lego-Shop</h5>
+            <p>Luzi's, Jigme's und Lani's Lego-Shop</p>
+
+          </div>
+          <!-- Grid column -->
+
+          <hr class="clearfix w-100 d-md-none pb-3">
+
+          <!-- Grid column -->
+          <div class="col-md-3 align-right ">
+
+            <!-- Links -->
+            <ul class="list-unstyled">
+              <li><span>Für weitere Legos: </span>
+                <a href="https://www.lego.com/de-ch">Lego.com</a>
+              </li>
+             
+            </ul>
+
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+      </div>
+      <!-- Footer Links -->
+
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2019 Copyright:
+        <span>Luzi, Jigme, Lani</span>
+      </div>
+      <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+    </body>
+
+    </html>
