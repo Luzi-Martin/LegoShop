@@ -40,6 +40,12 @@
           <li class="nav-item">
             <a class="nav-link" href="/user">User</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/registration">Registration</a>
+          </li>
         </ul>
       </div><!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
