@@ -39,6 +39,9 @@
           <a class="dropdown-item" href="#">Abmelden</a>
         </div>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/user">User</a>
+      </li>
     </ul>
   </div>
 </nav>
