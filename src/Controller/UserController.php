@@ -23,7 +23,16 @@ class UserController
 
     public function login() {
         $view = new View('user/login');
+        $view->title = "Anmeldung";
+        $view->heading = "Anmeldung";
         $view->display();
+    }
+
+    public function doLogin(){
+        $userRepository = new UserRepository();
+
+        $id = $userRepository->getIdByMailAndPassword($_POST["email"], $_POST["password"]);
+        
     }
 
     public function registration() {
