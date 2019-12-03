@@ -28,7 +28,13 @@ class UserController
 
     public function registration() {
         $view = new View('user/registration');
+        $view->title = 'Benutzer erstellen';
+        $view->heading = 'Benutzer erstellen';
         $view->display();
+    }
+
+    public function registrate() {
+        
     }
 
     public function create()

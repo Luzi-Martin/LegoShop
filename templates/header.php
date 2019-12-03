@@ -65,7 +65,7 @@
     </header>
 
     <main class="container">
-    <h1><?= $heading; ?></h1>
+    <h1></h1>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
