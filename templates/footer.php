@@ -26,6 +26,11 @@
 
             <!-- Links -->
             <ul class="list-unstyled">
+              <li>
+                <span>Kontakt:</span>
+                <a href="mailTo:luzi.martin@swisscom.com">Luzi Martin</a>
+              </li>
+
               <li><span>Für weitere Legos: </span>
                 <a href="https://www.lego.com/de-ch">Lego.com</a>
               </li>
