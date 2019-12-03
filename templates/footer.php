@@ -1,7 +1,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="page-footer font-small blue pt-4" style="color: white; background-color: #333;">
+    <footer class="page-footer font-small blue pt-2 footer" style="color: white; background-color: #333; height: Auto;">
 
       <!-- Footer Links -->
       <div class="container-fluid text-center text-md-left">
@@ -47,7 +47,7 @@
       <!-- Footer Links -->
 
       <!-- Copyright -->
-      <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <div class="footer-copyright text-center">© 2019 Copyright:
         <span>Luzi, Jigme, Lani</span>
       </div>
       <!-- Copyright -->
