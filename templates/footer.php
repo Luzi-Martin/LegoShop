@@ -1,16 +1,16 @@
     </main>
 
     <!-- Footer -->
-    <footer class="page-footer font-small blue pt-2 footer" style="color: white; background-color: #333; height: Auto;">
+    <footer class="page-footer font-small blue pt-2 footer" style="color: white; background-color: #333; height: Auto; padding:16px">
 
       <!-- Footer Links -->
       <div class="container-fluid text-center text-md-left">
 
         <!-- Grid row -->
-        <div class="row justify-content-between" style="align-items: center">
+        <div class="row d-flex justify-content-between" style="align-items:flex-end">
 
           <!-- Grid column -->
-          <div class="col-md-6 mt-md-0 mt-3">
+          <div class=" mt-md-0 mt-3">
 
             <!-- Content -->
             <h5 class="text-uppercase">Lego-Shop</h5>
@@ -19,10 +19,12 @@
           </div>
           <!-- Grid column -->
 
-          <hr class="clearfix w-100 d-md-none pb-3">
+          <div class="footer-copyright text-center py-3 ">© 2019 Copyright:
+            <span>Luzi, Jigme, Lani</span>
+          </div>
 
           <!-- Grid column -->
-          <div class="col-md-3 align-right ">
+          <div class=" align-right ">
 
             <!-- Links -->
             <ul class="list-unstyled">
@@ -34,11 +36,13 @@
               <li><span>Für weitere Legos: </span>
                 <a href="https://www.lego.com/de-ch">Lego.com</a>
               </li>
-             
+
             </ul>
 
           </div>
           <!-- Grid column -->
+
+          
 
         </div>
         <!-- Grid row -->
@@ -47,9 +51,7 @@
       <!-- Footer Links -->
 
       <!-- Copyright -->
-      <div class="footer-copyright text-center py-3">© 2019 Copyright:
-        <span>Luzi, Jigme, Lani</span>
-      </div>
+
       <!-- Copyright -->
 
     </footer>
