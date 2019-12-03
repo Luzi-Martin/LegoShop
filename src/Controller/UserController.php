@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\LocationRepository;
 use App\Repository\UserRepository;
 use App\View\View;
 
@@ -21,7 +22,8 @@ class UserController
         $view->display();
     }
 
-    public function login() {
+    public function login()
+    {
         $view = new View('user/login');
         $view->title = "Anmeldung";
         $view->heading = "Anmeldung";
@@ -35,15 +37,31 @@ class UserController
         
     }
 
-    public function registration() {
+    public function registration()
+    {
+        $locationsRepository = new LocationRepository();
+
         $view = new View('user/registration');
         $view->title = 'Benutzer erstellen';
         $view->heading = 'Benutzer erstellen';
+        $view->locations = $locationsRepository->readAll();
         $view->display();
     }
 
-    public function registrate() {
-        
+    public function doRegistrate()
+    {
+        if (isset($_POST['send'])) {
+            $firstName = $_POST['fname'];
+            $lastName = $_POST['lname'];
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $street = $_POST['street'];
+            $house_nr = $_POST['house_nr'];
+            $location_id = $_POST['location'];
+
+            $userRepository = new UserRepository();
+            $userRepository->create($firstName, $lastName, $email, $password, $street, $house_nr, $location_id);
+        }
     }
 
     public function create()
@@ -63,7 +81,7 @@ class UserController
             $password = $_POST['password'];
 
             $userRepository = new UserRepository();
-            $userRepository->create($firstName, $lastName, $email, $password);
+            // $userRepository->create($firstName, $lastName, $email, $password);
         }
 
         // Anfrage an die URI /user weiterleiten (HTTP 302)
