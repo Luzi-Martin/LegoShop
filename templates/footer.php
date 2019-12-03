@@ -47,7 +47,7 @@
       <!-- Footer Links -->
 
       <!-- Copyright -->
-      <div class="footer-copyright text-center">© 2019 Copyright:
+      <div class="footer-copyright text-center py-3">© 2019 Copyright:
         <span>Luzi, Jigme, Lani</span>
       </div>
       <!-- Copyright -->
