@@ -10,14 +10,14 @@ session_start();
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
-  <title><?= $title; ?> | Lego Shop</title>
+  <title>Startseite | Lego Shop</title>
 </head>
 
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">
-        <img src="H:\Lego-shop\LegoShop\public\favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="">
+      <a class="navbar-brand" href="/default/index">
+        <img src="../favicon.ico" width="30" height="30" class="d-inline-block align-top" alt="">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -50,7 +50,7 @@ session_start();
               <div class="dropdown-divider"></div>
               <?php
               if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
-                echo '<a class="dropdown-item" href="/user/logout">Abmelden</a>';
+                echo '<a class="dropdown-item" href="/user/doLogout">Abmelden</a>';
               } else {
                 echo '<a class="dropdown-item" href="/user/login">Anmelden</a>';
               }

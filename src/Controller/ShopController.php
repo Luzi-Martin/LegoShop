@@ -14,7 +14,15 @@ class ShopController
     {
         $shopRepository = new ShopRepository();
         $view = new View('shop/index');
-        $view->shops = $shopRepository->readAll();
+        $view->products = $shopRepository->readAll();
+        $view->display();
+    }
+
+    public function product()
+    {
+        $shopRepository = new ShopRepository();
+        $view = new View('shop/product');
+        $view->products = $shopRepository->id;
         $view->display();
     }
 }
