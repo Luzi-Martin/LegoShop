@@ -35,6 +35,7 @@ class UserController
         $email = $_POST ['inputEmail'];
         $password = sha1($_POST ['inputPassword']);
         $id = $userRepository->getIdByMailAndPassword($email, $password);
+        $isAdmin = $userRepository->getAdminById($id);
         
         if(!isset($id)){
             echo "Falsche Einloggdaten!";
@@ -42,6 +43,7 @@ class UserController
         }else{
             $_SESSION ['user'] ['email'] = $email;
             $_SESSION['loggedin'] = true;
+            $_SESSION['isAdmin'] = $isAdmin;
             
             header('Location: /');
         }
