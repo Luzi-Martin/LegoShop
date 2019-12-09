@@ -68,4 +68,9 @@ session_start();
       </div>
     </nav>
   </header>
-  <main class="container">
+          <?php
+          if (!isset($_SESSION['loggedin'])) {
+            echo '<main class="bg">';
+          }
+          ?>
+      <div class="main">
