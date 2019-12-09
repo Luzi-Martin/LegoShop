@@ -42,6 +42,7 @@ class UserController
         }else{
             $_SESSION ['user'] ['email'] = $email;
             $_SESSION['loggedin'] = true;
+            
             header('Location: /');
         }
     }
@@ -104,5 +105,19 @@ class UserController
 
         // Anfrage an die URI /user weiterleiten (HTTP 302)
         header('Location: /user');
+    }
+
+    public function doLogout(){
+    session_start();
+    unset($_SESSION['loggedin']);
+    unset($_SESSION['user'] ['email']);
+    session_destroy();
+    }
+
+    public function logout(){
+        $view = new View('user/logout');
+        $view->title = "Abmeldung";
+        $view->heading = "Abmeldung";
+        $view->display();
     }
 }
