@@ -33,7 +33,7 @@ class UserController
         if(!isset($_POST['inputPassword']) || !isset($_POST['inputEmail'])){ echo "Fehler beim Übertragen der Daten"; }
 
         $email = $_POST ['inputEmail'];
-        if($email == "luzimartin9@gmail.com"){ $password = $_POST['inputPassword']; }else{ $password = sha1($_POST ['inputPassword']); }
+        $password = sha1($_POST ['inputPassword']);
         $id = $userRepository->getIdByMailAndPassword($email, $password);
         
         if(!isset($id)){
@@ -42,6 +42,7 @@ class UserController
         }else{
             $_SESSION ['user'] ['email'] = $email;
             $_SESSION['loggedin'] = true;
+            
             header('Location: /');
         }
     }
@@ -104,5 +105,19 @@ class UserController
 
         // Anfrage an die URI /user weiterleiten (HTTP 302)
         header('Location: /user');
+    }
+
+    public function doLogout(){
+    session_start();
+    unset($_SESSION['loggedin']);
+    unset($_SESSION['user'] ['email']);
+    session_destroy();
+    }
+
+    public function logout(){
+        $view = new View('user/logout');
+        $view->title = "Abmeldung";
+        $view->heading = "Abmeldung";
+        $view->display();
     }
 }

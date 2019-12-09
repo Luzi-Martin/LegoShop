@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="de">
 
@@ -24,9 +27,13 @@
             <li class="nav-item active">
               <a class="nav-link" href="/default/index">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/shop/index">Shop</a>
-            </li>
+            <?php
+              if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1){
+                echo '<li class="nav-item">
+                <a class="nav-link" href="/shop/index">Shop</a>
+              </li>';
+              }
+            ?>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
