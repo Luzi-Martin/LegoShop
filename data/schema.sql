@@ -29,6 +29,7 @@
   ALTER TABLE user ADD COLUMN street varchar
   (64);
   ALTER TABLE user ADD COLUMN house_nr int;
+  ALTER TABLE user ADD COLUMN location_id int(10);
 
 
   Create Table Locations

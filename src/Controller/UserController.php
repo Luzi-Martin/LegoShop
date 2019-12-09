@@ -33,7 +33,7 @@ class UserController
         if(!isset($_POST['inputPassword']) || !isset($_POST['inputEmail'])){ echo "Fehler beim Übertragen der Daten"; }
 
         $email = $_POST ['inputEmail'];
-        if($email == "luzimartin9@gmail.com"){ $password = $_POST['inputPassword']; }else{ $password = sha1($_POST ['inputPassword']); }
+        $password = sha1($_POST ['inputPassword']);
         $id = $userRepository->getIdByMailAndPassword($email, $password);
         
         if(!isset($id)){
