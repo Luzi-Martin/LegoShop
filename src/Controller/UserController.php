@@ -72,6 +72,7 @@ class UserController
             $userRepository = new UserRepository();
             $userRepository->create($firstName, $lastName, $email, $password, $street, $house_nr, $location_id);
         }
+        header('Location: /');
     }
 
     public function create()
@@ -80,22 +81,6 @@ class UserController
         $view->title = 'Benutzer erstellen';
         $view->heading = 'Benutzer erstellen';
         $view->display();
-    }
-
-    public function doCreate()
-    {
-        if (isset($_POST['send'])) {
-            $firstName = $_POST['fname'];
-            $lastName = $_POST['lname'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-
-            $userRepository = new UserRepository();
-            // $userRepository->create($firstName, $lastName, $email, $password);
-        }
-
-        // Anfrage an die URI /user weiterleiten (HTTP 302)
-        header('Location: /user');
     }
 
     public function delete()

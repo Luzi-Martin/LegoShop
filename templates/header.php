@@ -57,6 +57,13 @@ session_start();
               ?>
             </div>
           </li>
+          <?php
+          if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
+            echo '<li class="nav-item">
+                <a class="nav-link" href="/admin/index">Neuer Artikel</a>
+              </li>';
+          }
+          ?>
         </ul>
       </div>
     </nav>

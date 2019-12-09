@@ -14,23 +14,43 @@ class ShopRepository extends Repository
 {
     protected $tableName = 'product';
 
-    public function readAll($max = 100)
+
+    public function create($price, $name, $description)
     {
-        $query = "SELECT * FROM {$this->tableName} LIMIT 0, $max";
+        /// Injection Handling
+
+        if (preg_match('/(<|>|"|\')/', $price)) {
+            return;
+        }
+
+        if (preg_match('/(<|>|"|\')/', $name)) {
+            return;
+        }
+
+        if (preg_match('/(<|>|"|\')/', $description)) {
+            return;
+        }
+
+        $query = "INSERT INTO $this->tableName (price, name, description) VALUES (?, ?, ?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->execute();
+        $statement->bind_param('sss', $price, $name, $description);
 
-        $result = $statement->get_result();
-        if (!$result) {
+        if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
 
-        // Datensätze aus dem Resultat holen und in das Array $rows speichern
-        $rows = array();
-        while ($row = $result->fetch_object()) {
-            $rows[] = $row;
+        return $statement->insert_id;
+    }
+
+    public function updateById($id, $price, $name, $description) {
+        $query = "UPDATE $this->tableName SET  (price = ?, name = ?, description = ?) WHERE id = ?";
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('fssi', $price, $name, $description, $id);
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
         }
-        return $rows;
     }
 }
