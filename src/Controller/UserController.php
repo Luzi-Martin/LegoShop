@@ -31,10 +31,22 @@ class UserController
     }
 
     public function doLogin(){
+        session_start();
         $userRepository = new UserRepository();
+        if(!isset($_POST['inputPassword']) || !isset($_POST['inputEmail'])){ echo "Fehler beim Übertragen der Daten"; }
 
-        $id = $userRepository->getIdByMailAndPassword($_POST["email"], $_POST["password"]);
+        $email = $_POST ['inputEmail'];
+        if($email == "luzimartin9@gmail.com"){ $password = $_POST['inputPassword']; }else{ $password = sha1($_POST ['inputPassword']); }
+        $id = $userRepository->getIdByMailAndPassword($email, $password);
         
+        if(!isset($id)){
+            echo "Falsche Einloggdaten!";
+            header('Location: /user/login');
+        }else{
+            $_SESSION ['user'] ['email'] = $email;
+            $_SESSION['loggedin'] = true;
+            header('Location: /');
+        }
     }
 
     public function registration()
