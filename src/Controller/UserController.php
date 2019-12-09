@@ -112,6 +112,7 @@ class UserController
     unset($_SESSION['loggedin']);
     unset($_SESSION['user'] ['email']);
     session_destroy();
+    header('Location: /user/logout');
     }
 
     public function logout(){
