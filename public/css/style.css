@@ -7,7 +7,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
-  background-image: url("/public/images/home.png");
+  background-image: url("../images/landingpageBg.jpg");
 }
 body > .container {
   padding: 80px 15px 0;
@@ -24,8 +24,4 @@ body > .container {
 .footer > .container {
   padding-right: 15px;
   padding-left: 15px;
-}
-
-.background {
-  background-image: url("/public/images/home.png");
 }

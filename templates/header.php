@@ -47,7 +47,6 @@ session_start();
                 echo '<a class="dropdown-item" href="/user/registration">Registration</a>';
               }
               ?>
-
               <div class="dropdown-divider"></div>
               <?php
               if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
