@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\LocationRepository;
 use App\Repository\UserRepository;
+use App\Validation\InjectionHandler;
 use App\View\View;
 
 /**
@@ -27,22 +28,25 @@ class UserController
         $view->display();
     }
 
-    public function doLogin(){
+    public function doLogin()
+    {
         session_start();
         $userRepository = new UserRepository();
-        if(!isset($_POST['inputPassword']) || !isset($_POST['inputEmail'])){ echo "Fehler beim Übertragen der Daten"; }
+        if (!isset($_POST['inputPassword']) || !isset($_POST['inputEmail'])) {
+            echo "Fehler beim Übertragen der Daten";
+        }
 
-        $email = $_POST ['inputEmail'];
-        $password = sha1($_POST ['inputPassword']);
+        $email = $_POST['inputEmail'];
+        $password = sha1($_POST['inputPassword']);
         $id = $userRepository->getIdByMailAndPassword($email, $password);
-        
-        if(!isset($id)){
+
+        if (!isset($id)) {
             echo "Falsche Einloggdaten!";
             header('Location: /user/login');
-        }else{
-            $_SESSION ['user'] ['email'] = $email;
+        } else {
+            $_SESSION['user']['email'] = $email;
             $_SESSION['loggedin'] = true;
-            
+
             header('Location: /');
         }
     }
@@ -69,6 +73,13 @@ class UserController
             $house_nr = $_POST['house_nr'];
             $location_id = $_POST['location_id'];
 
+            /// Injection Handling
+            $fields = array($firstName, $lastName, $email, $password, $street, $house_nr, $location_id);
+
+            if (InjectionHandler::hasInjections($fields)) {
+                return;
+            }
+
             $userRepository = new UserRepository();
             $userRepository->create($firstName, $lastName, $email, $password, $street, $house_nr, $location_id);
         }
@@ -92,15 +103,17 @@ class UserController
         header('Location: /user');
     }
 
-    public function doLogout(){
-    session_start();
-    unset($_SESSION['loggedin']);
-    unset($_SESSION['user'] ['email']);
-    session_destroy();
-    header('Location: /user/logout');
+    public function doLogout()
+    {
+        session_start();
+        unset($_SESSION['loggedin']);
+        unset($_SESSION['user']['email']);
+        session_destroy();
+        header('Location: /user/logout');
     }
 
-    public function logout(){
+    public function logout()
+    {
         $view = new View('user/logout');
         $view->title = "Abmeldung";
         $view->heading = "Abmeldung";

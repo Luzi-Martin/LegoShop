@@ -36,39 +36,6 @@ class UserRepository extends Repository
      */
     public function create($firstName, $lastName, $email, $password, $street, $hous_nr, $location_id)
     {
-        /// Injection Handling
-
-        if (preg_match('/(<|>|"|\')/', $firstName)) {
-            return;
-        }
-
-        if (preg_match('/(<|>|"|\')/', $lastName)) {
-            return;
-        }
-
-        if (preg_match('/(<|>|"|\')/', $email)) {
-            return;
-        }
-
-        if (preg_match('/(<|>|"|\')/', $password)) {
-            return;
-        }
-
-        if (preg_match('/(<|>|"|\')/', $street)) {
-            return;
-        }
-
-        if (preg_match('/(<|>|"|\')/', $hous_nr)) {
-            return;
-        }
-
-        if (preg_match('/(<|>|"|\')/', $location_id)) {
-            return;
-        }
-
-
-
-
         $false = 0;
         $password = sha1($password);
 

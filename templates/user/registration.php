@@ -31,7 +31,7 @@
 		</div>
 		<div class="form-group">
 			<label class="control-label" for="password">Passwort</label>
-			<input id="password" name="password" type="password" class="form-control" required>
+			<input id="password" title="8 oder mehr Zeichen mit einer Mischung aus grossen- und kleinen Buchstaben und Ziffern" pattern="^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$" name="password" type="password" class="form-control" required>
 		</div>
 		<div class="form-group">
 
@@ -40,7 +40,7 @@
 			<div class=" col-md-5">
 				<button type="submit" name="send" class="btn btn-primary">Registrieren</button>
 			</div>
-			<div >
+			<div>
 				<a href="/user/login">Oder haben Sie schon einen Account? Login</a>
 			</div>
 		</div>
