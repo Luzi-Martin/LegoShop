@@ -69,7 +69,7 @@ class UserController
             $password = $_POST['password'];
             $street = $_POST['street'];
             $house_nr = $_POST['house_nr'];
-            $location_id = $_POST['location'];
+            $location_id = $_POST['location_id'];
 
             $userRepository = new UserRepository();
             $userRepository->create($firstName, $lastName, $email, $password, $street, $house_nr, $location_id);
