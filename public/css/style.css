@@ -5,9 +5,11 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
   margin-bottom: 60px;
   background-image: url("../images/landingpageBg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 body > .container {
   padding: 80px 15px 0;
@@ -17,11 +19,28 @@ body > .container {
   position: absolute;
   bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
- /* Vertically center the text there */
   background-color: #f5f5f5;
 }
 .footer > .container {
   padding-right: 15px;
   padding-left: 15px;
+}
+
+.bg {
+  background-color: white;
+  opacity: 0.7;
+}
+
+.product-container {
+  margin: 2% 0 10% 0;
+}
+
+.product {
+  display: flex;
+  flex-wrap: wrap;
+}
+.card {
+  width: 32%;
+  margin-right: 13px;
+  margin-bottom: 10px;
 }
