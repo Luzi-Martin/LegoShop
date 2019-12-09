@@ -21,7 +21,7 @@
 			<input id="house_nr" name="house_nr" type="text" class="form-control" required>
 		</div>
 		<div class="form-group">
-		<select name="location_id" class="form-control form-control-sm">
+			<select name="location_id" class="form-control form-control-sm">
 				<?php
 				foreach ($locations as $value) {
 					echo '<option value="' . $value->id . '">' . $value->name . '</option>';
@@ -34,8 +34,15 @@
 			<input id="password" name="password" type="password" class="form-control" required>
 		</div>
 		<div class="form-group">
-			
+
 		</div>
-		<button type="submit" name="send" class="btn btn-primary">Registrieren</button>
+		<div class="row">
+			<div class=" col-md-5">
+				<button type="submit" name="send" class="btn btn-primary">Registrieren</button>
+			</div>
+			<div >
+				<a href="/user/login">Oder haben Sie schon einen Account? Login</a>
+			</div>
+		</div>
 	</form>
 </div>
