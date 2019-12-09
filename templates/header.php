@@ -58,7 +58,7 @@ session_start();
             </div>
           </li>
           <?php
-          if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
+          if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
             echo '<li class="nav-item">
                 <a class="nav-link" href="/admin/index">Neuer Artikel</a>
               </li>';
@@ -68,4 +68,9 @@ session_start();
       </div>
     </nav>
   </header>
-  <main class="container">
+          <?php
+          if (!isset($_SESSION['loggedin'])) {
+            echo '<main class="bg">';
+          }
+          ?>
+      <div class="main">

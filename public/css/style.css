@@ -4,12 +4,12 @@ html {
   line-height: unset !important;
 }
 
+.main {
+  padding: 10%;
+}
+
 body {
   margin-bottom: 60px;
-  background-image: url("../images/landingpageBg.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   font-family: 'Helvetica';
 }
 
@@ -29,8 +29,10 @@ body > .container {
 }
 
 .bg {
-  background-color: white;
-  opacity: 0.7;
+  background-image: url("../images/lego-3625194_1920.png");
+  min-height: 100%;
+  width: 100%;
+  position: fixed;
 }
 
 .product-container {
@@ -46,10 +48,4 @@ body > .container {
   width: 32%;
   margin-right: 13px;
   margin-bottom: 10px;
-}
-
-.infoPageUp{
-  background-image: url("../images/landingpageBg.jpg");
-  height: 100%;
-  width: 100%;
 }
