@@ -10,7 +10,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  font-family: 'Helvetica';
 }
+
 body > .container {
   padding: 80px 15px 0;
 }

@@ -17,4 +17,12 @@ class ShopController
         $view->products = $shopRepository->readAll();
         $view->display();
     }
+
+    public function product()
+    {
+        $shopRepository = new ShopRepository();
+        $view = new View('shop/product');
+        $view->products = $shopRepository->id;
+        $view->display();
+    }
 }
