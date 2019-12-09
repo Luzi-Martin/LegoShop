@@ -39,8 +39,15 @@ body > .container {
   display: flex;
   flex-wrap: wrap;
 }
+
 .card {
   width: 32%;
   margin-right: 13px;
   margin-bottom: 10px;
+}
+
+.infoPageUp{
+  background-image: url("../images/landingpageBg.jpg");
+  height: 100%;
+  width: 100%;
 }
