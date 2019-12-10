@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ShopRepository;
+use APP\Validation\InjectionHandler;
 use App\View\View;
 
 /**
@@ -22,19 +23,18 @@ class AdminController extends Controller
     {
         $shopRepository = new ShopRepository();
 
+        $fields = array( $_POST['lprice'], $_POST['lname'],$_POST['ldescription']);
+
+            if (InjectionHandler::hasInjections($fields)) {
+                return;
+            }
+
         if (isset($_POST['add'])) {
             $price = $_POST['lprice'];
             $name = $_POST['lname'];
             $description = $_POST['ldescription'];
             $shopRepository->create($price, $name, $description);
-        } /*elseif (isset($_POST['delete'])) {
-            $shopRepository->deleteById($_POST['product_id']);
-        } elseif (isset($_POST['save'])) {
-            $price = $_POST['lprice'];
-            $name = $_POST['lname'];
-            $description = $_POST['ldescription'];
-            $shopRepository->updateById($_POST['product_id'], $price, $name, $shopRepository);
-        }*/
+        }
         header('Location: /admin/index');
     }
 }

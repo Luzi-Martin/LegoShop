@@ -17,20 +17,6 @@ class ShopRepository extends Repository
 
     public function create($price, $name, $description)
     {
-        /// Injection Handling
-
-        if (preg_match('/(<|>|"|\')/', $price)) {
-            return;
-        }
-
-        if (preg_match('/(<|>|"|\')/', $name)) {
-            return;
-        }
-
-        if (preg_match('/(<|>|"|\')/', $description)) {
-            return;
-        }
-
         $query = "INSERT INTO $this->tableName (price, name, description) VALUES (?, ?, ?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
