@@ -37,11 +37,12 @@ class UserController
         }
 
         $email = $_POST['inputEmail'];
-        $password = sha1($_POST['inputPassword']);
+        $password = $_POST['inputPassword'];
+        $id = 0;
         $id = $userRepository->getIdByMailAndPassword($email, $password);
         $isAdmin = $userRepository->getAdminById($id);
         
-        if(!isset($id)){
+        if($id < 1){
             echo "Falsche Einloggdaten!";
             header('Location: /user/login');
         } else {
@@ -49,7 +50,7 @@ class UserController
             $_SESSION['loggedin'] = true;
             $_SESSION['isAdmin'] = $isAdmin;
             
-            header('Location: /');
+           header('Location: /');
         }
     }
 
@@ -63,7 +64,6 @@ class UserController
         $view->locations = $locationsRepository->readAll();
         $view->display();
     }
-
     public function doRegistrate()
     {
         if (isset($_POST['send'])) {

@@ -22,7 +22,7 @@ class ShopController
     {
         $shopRepository = new ShopRepository();
         $view = new View('shop/product');
-        $view->products = $shopRepository->id;
+        $view->product = $shopRepository->readById($_GET['id']);
         $view->display();
     }
 }
