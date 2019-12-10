@@ -137,13 +137,13 @@ class UserController extends Controller
         $view->display($this->returnRole());
     }
 
-    public function bearbeiten(){
+    public function edit(){
         $role = $this->returnRole();
         if($role != 0){
             
             $locationsRepository = new LocationRepository();
             $userRepository = new UserRepository();
-            $view = new View('user/bearbeiten');
+            $view = new View('user/edit');
             $view->title = "bearbeiten";
             $view->heading = "bearbeiten";
             $view->locations = $locationsRepository->readAll();
@@ -152,5 +152,47 @@ class UserController extends Controller
         }else{
             header('Location: /');
         }
+    }
+
+    public function doEdit(){
+        session_start();
+        $userRepository = new UserRepository();
+        $id = $_SESSION['id'];
+        $firstName = $_POST['fname'];
+        $lastName = $_POST['lname'];
+        $email = $_POST['email'];
+        $street = $_POST['street'];
+        $house_nr = $_POST['house_nr'];
+        $location_id = $_POST['location_id'];
+
+        /// Injection Handling
+        $fields = array($firstName, $lastName, $email, $street, $house_nr, $location_id);
+
+        if (InjectionHandler::hasInjections($fields)) {
+            return;
+        }
+
+        $userRepository->updateById($id, $firstName, $lastName, $email, $street, $house_nr, $location_id);
+
+        header('Location: /');
+        echo "Daten erfolgreich geändert";
+    }
+
+    public function editPassword(){
+        $role = $this->returnRole();
+        if($role != 0){
+            $userRepository = new UserRepository();
+            $view = new View('user/editPassword');
+            $view->title = "Passwort bearbeiten";
+            $view->heading = "Passwort bearbeiten";
+            $view->user = $userRepository->readById($_SESSION['id']);
+            $view->display($role);
+        }else{
+            header('Location: /');
+        }
+    }
+
+    public function doEditPassword(){
+
     }
 }
