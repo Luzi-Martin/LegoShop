@@ -10,14 +10,15 @@ use App\View\View;
 /**
  * Siehe Dokumentation im DefaultController.
  */
-class UserController
+class UserController extends Controller
 {
     public function index()
     {
+
         $view = new View('user/index');
         $view->title = 'Benutzer';
         $view->heading = 'Benutzer';
-        $view->display();
+        $view->display($this->returnRole());
     }
 
     public function login()
@@ -25,7 +26,7 @@ class UserController
         $view = new View('user/login');
         $view->title = "Anmeldung";
         $view->heading = "Anmeldung";
-        $view->display();
+        $view->display($this->returnRole());
     }
 
     public function doLogin()
@@ -40,14 +41,25 @@ class UserController
         $password = sha1($_POST['inputPassword']);
         $id = $userRepository->getIdByMailAndPassword($email, $password);
         $isAdmin = $userRepository->getAdminById($id);
+
         
         if(!isset($id)){
             echo "Falsche Einloggdaten!";
             header('Location: /user/login');
+
+            $_SESSION['role'] = 0;
         } else {
             $_SESSION['user']['email'] = $email;
             $_SESSION['loggedin'] = true;
             $_SESSION['isAdmin'] = $isAdmin;
+            $_SESSION['id'] = $id;
+            if($isAdmin == 1){
+                $_SESSION['role'] = 2;
+            }else if($isAdmin == 0){
+                $_SESSION['role'] == 1;
+            }else{
+                $_SESSION['role'] == 0;
+            }
             
             header('Location: /');
         }
@@ -61,7 +73,7 @@ class UserController
         $view->title = 'Benutzer erstellen';
         $view->heading = 'Benutzer erstellen';
         $view->locations = $locationsRepository->readAll();
-        $view->display();
+        $view->display($this->returnRole());
     }
 
     public function doRegistrate()
@@ -93,7 +105,7 @@ class UserController
         $view = new View('user/create');
         $view->title = 'Benutzer erstellen';
         $view->heading = 'Benutzer erstellen';
-        $view->display();
+        $view->display($this->returnRole());
     }
 
     public function delete()
@@ -108,10 +120,13 @@ class UserController
     public function doLogout()
     {
         session_start();
-        unset($_SESSION['loggedin']);
         unset($_SESSION['user']['email']);
+        unset($_SESSION['id']);
+        $_SESSION['role'] = 0;
+        $_SESSION['loggedin'] = 0;
+
         session_destroy();
-        header('Location: /user/logout');
+        header('Location: /');
     }
 
     public function logout()
@@ -119,6 +134,23 @@ class UserController
         $view = new View('user/logout');
         $view->title = "Abmeldung";
         $view->heading = "Abmeldung";
-        $view->display();
+        $view->display($this->returnRole());
+    }
+
+    public function bearbeiten(){
+        $role = $this->returnRole();
+        if($role != 0){
+            
+            $locationsRepository = new LocationRepository();
+            $userRepository = new UserRepository();
+            $view = new View('user/bearbeiten');
+            $view->title = "bearbeiten";
+            $view->heading = "bearbeiten";
+            $view->locations = $locationsRepository->readAll();
+            $view->user = $userRepository->readById($_SESSION['id']);
+            $view->display($role);
+        }else{
+            header('Location: /');
+        }
     }
 }

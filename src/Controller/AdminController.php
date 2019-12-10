@@ -8,14 +8,14 @@ use App\View\View;
 /**
  * Siehe Dokumentation im DefaultController.
  */
-class AdminController
+class AdminController extends Controller
 {
     public function index()
     {
         $shopRepository = new ShopRepository();
         $view = new View('admin/index');
         $view->products = $shopRepository->readAll();
-        $view->display();
+        $view->display($this->returnRole());
     }
 
     public function newProduct()

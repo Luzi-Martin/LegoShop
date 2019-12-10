@@ -8,14 +8,14 @@ use App\View\View;
 /**
  * Siehe Dokumentation im DefaultController.
  */
-class ProductController
+class ProductController extends Controller
 {
     public function index()
     {
         $shopRepository = new ShopRepository();
         $view = new View('shop/index');
         $view->product = $shopRepository->readById($_GET['id']);
-        $view->display();
+        $view->display($_SESSION['role']);
     }
 
     public function product()
@@ -23,6 +23,6 @@ class ProductController
         $shopRepository = new ShopRepository();
         $view = new View('shop/product');
         $view->products = $shopRepository->id;
-        $view->display();
+        $view->display($this->returnRole());
     }
 }

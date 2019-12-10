@@ -26,7 +26,7 @@ use App\View\View;
  *     - Daten welche z.B. von einem Formular kommen validieren und dem Model
  *         übergeben, damit sie in der Datenbank persistiert werden können.
  */
-class DefaultController
+class DefaultController extends Controller
 {
     /**
      * Die index Funktion des DefaultControllers sollte in jedem Projekt
@@ -43,6 +43,6 @@ class DefaultController
         $view = new View('default/index');
         $view->title = 'Startseite';
         $view->heading = 'Startseite';
-        $view->display();
+        $view->display($this->returnRole());
     }
 }

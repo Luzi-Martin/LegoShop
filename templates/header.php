@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!doctype html>
 <html lang="de">
 
@@ -23,54 +20,4 @@ session_start();
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/default/index">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <?php
-          if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
-            echo '<li class="nav-item">
-                <a class="nav-link" href="/shop/index">Shop</a>
-              </li>';
-          }
-          ?>
-          <li class="nav-item">
-            <a class="nav-link" href="/user">User</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profil</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <?php
-              if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
-                echo '<a class="dropdown-item" href="/user/registration">Bearbeitung</a>';
-              } else {
-                echo '<a class="dropdown-item" href="/user/registration">Registration</a>';
-              }
-              ?>
-              <div class="dropdown-divider"></div>
-              <?php
-              if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == 1) {
-                echo '<a class="dropdown-item" href="/user/doLogout">Abmelden</a>';
-              } else {
-                echo '<a class="dropdown-item" href="/user/login">Anmelden</a>';
-              }
-              ?>
-            </div>
-          </li>
-          <?php
-          if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
-            echo '<li class="nav-item">
-                <a class="nav-link" href="/admin/index">Neuer Artikel</a>
-              </li>';
-          }
-          ?>
-        </ul>
-      </div>
-    </nav>
-  </header>
-          <?php
-          if (!isset($_SESSION['loggedin'])) {
-            echo '<main class="bg">';
-          }
-          ?>
-      <div class="main">
+        
