@@ -8,52 +8,43 @@
                             <th scope="col"> </th>
                             <th scope="col">Produkt</th>
                             <th scope="col" class="">Preis</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <div id="products">
-                            <tr>
-                                <td><img src="../../images/lego-stein.png" style="width: 50px" /> </td>
-                                <td>Product Name Dada</td>
-
-                                
-                                <td class="">124,90 €</td>
-                                <td class="">
-                                    <button onclick="removeFromLocalStorage()" type="button" class="close" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><img src="../../images/lego-stein.png" style="width: 50px" /> </td>
-                                <td>Product Name Toto</td>
-
-                                
-                                <td class="">33,90 €</td>
-                                <td class="">
-                                    <button type="button" class="close" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><img src="../../images/lego-stein.png" style="width: 50px" /> </td>
-                                <td>Product Name Titi</td>
-
-                                
-                                <td class="">70,00 €</td>
-                                <td class="">
-                                    <button type="button" class="close" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </td>
-                            </tr>
+                            <?php
+                            foreach ($products as $p) {
+                                echo '<tr>
+                                    <td><img src="../../images/lego-stein.png" style="width: 50px" /> </td>
+                                    <td> <a class="" href="/shop/product?id=' . $p->id . '">' . $p->name . '  </a></td>
+                                    <td class="">' . $p->price . ' CHF</td>
+                                    <td class="">
+                                        <button type="button" class="close" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </td>
+                                   
+                                </tr> ';
+                            }
+                            ?>
                         </div>
                         <tr>
                             <td></td>
                             <td></td>
                             <td><strong>Total</strong></td>
-                            <td class="text-right"><p id="total"><strong></strong></p></td>
+                            <td class="text-right">
+                                <?php
+                                $price = 0;
+
+                                foreach ($products as $p) {
+                                    $price += $p->price;
+                                }
+
+                                echo '<p id="total">' . $price . '<strong></strong></p>';
+
+                                ?>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

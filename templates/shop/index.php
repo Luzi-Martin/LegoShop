@@ -5,7 +5,7 @@
             <?php
             foreach ($products as $product) {
                 echo
-                    '<a href="product?id=' . $product->id . '" class="list-group-item list-group-item-action card" >
+                    '<a href="/shop/product?id=' . $product->id . '" class="list-group-item list-group-item-action card" >
                         <img src="../images/lego-stein.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">' . $product->name . '</h5>

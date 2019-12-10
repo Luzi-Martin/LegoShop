@@ -55,9 +55,9 @@ name varchar
 
      CREATE TABLE shoppingcart
     (
-      id int(10) unsigned NOT NULL PRIMARY Key AUTO_INCREMENT,
-      product_id int(10) not Null,
-      user_id int(10) not NULL,
+      id int(10)  NOT NULL unsigned PRIMARY Key AUTO_INCREMENT,
+      product_id  int(10) unsigned not Null,
+      user_id  int(10) unsigned not NULL,
       CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES user(id) on UPDATE CASCADE on DELETE CASCADE,
       CONSTRAINT fk_product_id FOREIGN KEY (product_id) REFERENCES product(id) on UPDATE CASCADE on DELETE CASCADE
     )
