@@ -10,7 +10,6 @@
                                 <a class="dropdown-item" href="/user/login">Anmelden</a>
                         </div>
                     </li>
-
                 </ul>
             </div>
         </nav>
