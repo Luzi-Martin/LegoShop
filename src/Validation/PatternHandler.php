@@ -13,7 +13,7 @@ class PatternHandler {
         return false;
     }
 
-    public static function ispasswort($password) {
+    public static function isPasswort($password) {
         $passwordRegex = "^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])\S*$";
 
         if(preg_match($passwordRegex, strval($password))) {
@@ -28,7 +28,4 @@ class PatternHandler {
         }
             return true;
     }
-
-    
-
 }
