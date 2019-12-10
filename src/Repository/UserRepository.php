@@ -21,7 +21,7 @@ class UserRepository extends Repository
     /**
      * Erstellt einen neuen benutzer mit den gegebenen Werten.
      *
-     * Das Passwort wird vor dem ausführen des Queries noch mit dem SHA1
+     * Das Passwort wird vor dem ausführen des Queries noch mit dem Bcrypt
      *  Algorythmus gehashed.
      *
      * @param $firstName Wert für die Spalte firstName
@@ -37,9 +37,7 @@ class UserRepository extends Repository
     public function create($firstName, $lastName, $email, $password, $street, $hous_nr, $location_id)
     {
         $false = 0;
-        $password = sha1($password);
-
-        $query = "INSERT INTO $this->tableName (firstName, lastName, email, password, admin, street, house_nr, location_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO $this->tableName (firstName, lastName, email, password, admin, street, house_nr, location_id) VALUES (?, ?, ?, sha2(?,256), ?, ?, ?, ?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->bind_param('ssssissi', $firstName, $lastName, $email, $password,  $false, $street, $hous_nr, $location_id);
@@ -53,7 +51,8 @@ class UserRepository extends Repository
 
     public function getIdByMailAndPassword($email, $password){
         //Query erstellen
-        $query = "SELECT * FROM {$this->tableName} WHERE email=? AND password=?";
+        $query = "SELECT * FROM {$this->tableName} WHERE email=? AND password=sha2(?,256)";
+
         // Datenbankverbindung anfordern und, das Query "preparen" (vorbereiten)
         // und die Parameter "binden"
         $statement = ConnectionHandler::getConnection()->prepare($query);
