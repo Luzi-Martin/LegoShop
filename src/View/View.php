@@ -80,11 +80,24 @@ class View
         }
     }
 
-    public function display()
+    public function display($role)
     {
         extract($this->properties);
 
         require './../templates/header.php';
+        switch($role){
+            case 0:
+                require './../templates/menu/menuOne.php';
+                break;
+            case 1:
+                require './../templates/menu/menuTwo.php';
+                break;
+            case 2:
+                require './../templates/menu/menuThree.php';
+                break;
+            default:
+                break;
+        }
         require $this->viewfile;
         require './../templates/footer.php';
     }
