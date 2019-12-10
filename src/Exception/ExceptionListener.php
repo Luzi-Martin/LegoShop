@@ -30,6 +30,6 @@ class ExceptionListener
             $view->userMessage = 'Bitte kontaktieren Sie den Administrator';
         }
 
-        $view->display();
+        $view->display($_SESSION['role']);
     }
 }

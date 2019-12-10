@@ -10,31 +10,21 @@ use App\Validation\InjectionHandler;
 /**
  * Siehe Dokumentation im DefaultController.
  */
-class ShopController
+class ShopController extends Controller
 {
     public function index()
     {
         $shopRepository = new ShopRepository();
         $view = new View('shop/index');
         $view->products = $shopRepository->readAll();
-        $view->display();
+        $view->display($this->returnRole());
     }
 
     public function product()
     {
-        if (!isset($_GET['id']) || InjectionHandler::hasInjections($_GET['id'])) {
-            echo "Fehler beim Übertragen der Daten";
-        } else {
-            $shopRepository = new ShopRepository();
-            $view = new View('shop/product');
-            $view->product = $shopRepository->readById($_GET['id']);
-            $view->display();
-        }
-    }
-
-    public function shoppingCart()
-    {
-        $view = new View('shop/shoppingCart');
-        $view->display();
+        $shopRepository = new ShopRepository();
+        $view = new View('shop/product');
+        $view->products = $shopRepository->readById($_GET['id']);
+        $view->display($this->returnRole());
     }
 }
