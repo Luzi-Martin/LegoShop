@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\LocationRepository;
 use App\Repository\UserRepository;
 use App\Validation\InjectionHandler;
+use App\Validation\PatternHandler;
 use App\View\View;
 
 /**
@@ -32,7 +33,7 @@ class UserController
     {
         session_start();
         $userRepository = new UserRepository();
-        if (!isset($_POST['inputPassword']) || !isset($_POST['inputEmail'])) {
+        if (!isset($_POST['inputPassword']) || !isset($_POST['inputEmail']) ||InjectionHandler::hasInjections($_POST['inputEmail']) || PatternHandler::isEmail($_POST['inputEmail'])) {
             echo "Fehler beim Übertragen der Daten";
         }
 

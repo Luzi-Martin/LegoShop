@@ -51,22 +51,3 @@ if ($product && $product->description && $product->name && $product->price) {
     ';
 }
 ?>
-<script>
-    function addToLocalStorage() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const myParam = urlParams.get('id');
-
-        let ids = [];
-
-        if (localStorage.getItem("product_ids") && Array.isArray(JSON.parse(localStorage.getItem("product_ids")))) {
-            ids = JSON.parse(localStorage.getItem("product_ids"));
-            ids.push(myParam);
-        } else {
-            ids.push(myParam);
-        }
-        localStorage.setItem("product_ids", JSON.stringify(ids));
-
-        console.log(JSON.parse(localStorage.getItem("product_ids")));
-        alert("wurde zu Warenkorb hinzugefügt.")
-    }
-</script>
