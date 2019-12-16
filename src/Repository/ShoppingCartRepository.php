@@ -29,7 +29,7 @@ class ShoppingCartRepository extends Repository
     }
 
     public function getMyProducts($userId) {
-        $query = "SELECT * FROM {$this->tableName} as x JOIN product as p on x.product_id=p.id WHERE x.user_id=?";
+        $query = "SELECT x.id as id, x.product_id as productId, p.price as price, p.name as name FROM {$this->tableName} as x JOIN product as p on x.product_id=p.id WHERE x.user_id=?";
 
         // Datenbankverbindung anfordern und, das Query "preparen" (vorbereiten)
         // und die Parameter "binden"

@@ -41,6 +41,7 @@ class ShopController extends Controller
     public function addToShoppingCart() {
         session_start();
         if(isset($_GET['id']) && InjectionHandler::hasInjections($_GET['id'])) {
+            header('Location:/');
             return;
         }
 
@@ -60,12 +61,27 @@ class ShopController extends Controller
         
         $shoppingCartRepository = new ShoppingCartRepository();
         if($role != 0) {
-            $view = new View('shop/shoppingCart');
+        $view = new View('shop/shoppingCart');
         $view->products = $shoppingCartRepository->getMyProducts($_SESSION['id']);
         $view->display($role);
         } else {
             header('Location:/');
         }
         
+    }
+
+    public function removeFromShoppinCart() {
+        echo $_POST['id'];
+
+        session_start();
+        if(isset($_POST['id']) && InjectionHandler::hasInjections($_POST['id'])) {
+            header('Location:/');
+            return;
+        }
+
+
+        $shoppingCartRepository = new ShoppingCartRepository();
+        $shoppingCartRepository->deleteById($_POST['id']);
+        header('Location:/shop/shoppingCart');
     }
 }
