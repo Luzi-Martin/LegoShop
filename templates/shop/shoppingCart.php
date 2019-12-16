@@ -45,7 +45,7 @@
                                     $price += $p->price;
                                 }
 
-                                echo '<p id="total">' . $price . '<strong></strong></p>';
+                                echo '<p id="total">' . $price . 'CHF<strong></strong></p>';
 
                                 ?>
                             </td>

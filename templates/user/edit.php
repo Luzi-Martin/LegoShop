@@ -32,7 +32,8 @@
 			?>
 		</div>
 		<div class="form-group">
-			<select name="location_id" class="form-control form-control-sm">
+			<label for="place">Ort</label>
+			<select id="place" name="location_id" class="form-control form-control-sm">
 				<?php
 				foreach ($locations as $value) {
 					echo '<option value="' . $value->id . '">' . $value->name . '</option>';
