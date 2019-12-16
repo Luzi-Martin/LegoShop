@@ -33,11 +33,9 @@ class AdminController extends Controller
             $fields = array($_POST['lprice'], $_POST['lname'], $_POST['ldescription']);
 
             if (InjectionHandler::hasInjections($fields)) {
-                echo 'has injections';
                 header('Location:/');
                 return;
             }
-            echo 'has no injections';
 
             if (isset($_POST['add'])) {
                 $price = $_POST['lprice'];
@@ -46,7 +44,7 @@ class AdminController extends Controller
                 $shopRepository->create($price, $name, $description);
             }
 
-            // header('Location: /admin/index');
+            header('Location: /admin/index');
         } else {
             header('Location: /');
         }
