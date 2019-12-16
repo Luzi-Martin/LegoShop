@@ -45,7 +45,7 @@
 		</div>
 		<div class="row">
 			<div class=" col-md-5">
-				<button type="submit" name="send" class="btn btn-primary">Bearbeiten beenden</button>
+				<button type="submit" name="send" class="btn btn-primary">Speichern</button>
 			</div>
 			<div>
 				<a href="/">Oder wollen Sie abbrechen?</a>
@@ -53,7 +53,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-5 mt-2">
-                <a href?"<button type="submit" class="btn btn-primary">Passwort ändern</button>
+                <a href="user/editPassword"<button type="submit" class="btn btn-primary">Passwort ändern</button></a>
 			</div>
         </div>
 	</form>
