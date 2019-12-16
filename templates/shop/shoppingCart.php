@@ -60,7 +60,7 @@
                     <a href="index" class="btn button btn-primary">Weiter Einkaufen</a>
                 </div>
                 <div class="col-sm-12 col-md-6 ">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase">Bezahlen</button>
+                    <button class="btn btn-lg btn-block btn-primary text-uppercase">Bezahlen</button>
                 </div>
             </div>
         </div>
