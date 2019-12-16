@@ -13,6 +13,10 @@ use App\Validation\InjectionHandler;
  */
 class ShopController extends Controller
 {
+
+    /*  index()
+        Funktion zum anzeigen alle Produkte
+    */
     public function index()
     {
         $role = $this->returnRole();
@@ -25,6 +29,10 @@ class ShopController extends Controller
             header('Location:/');
         }
     }
+
+    /*  product()
+        Funktion zum speichern eines Produktes als Benutzer ohne admin Recht
+    */
 
     public function product()
     {
@@ -43,6 +51,10 @@ class ShopController extends Controller
         $view->display($this->returnRole());
     }
 
+    /*  addToShoppingCart()
+        Funktion zum hinzufügen eines Produktes zum Warenkorb.
+    */
+
     public function addToShoppingCart() {
         session_start();
         if(isset($_GET['id']) && InjectionHandler::hasInjections($_GET['id'])) {
@@ -57,6 +69,10 @@ class ShopController extends Controller
         }
         header('Location:/shop');
     }
+
+    /*  saveProduct()
+        Funktion zum Anzeigen des Warenkorbs.
+    */
 
     public function shoppingCart() {
         $role = $this->returnRole();
@@ -75,6 +91,10 @@ class ShopController extends Controller
         }
         
     }
+
+    /*  saveProduct()
+        Funktion zum löschen eines Produktes aus dem Warenkorb.
+    */
 
     public function removeFromShoppinCart() {
         echo $_POST['id'];

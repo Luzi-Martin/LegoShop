@@ -11,19 +11,24 @@ use App\View\View;
  */
 class AdminController extends Controller
 {
+
+    /* index()
+        zeigt das erfassen eines Neuen Produktes an. Fals der Benutzer kein Admin ist, wird er auf die HomePage geleitet.
+    */
     public function index()
     {
         $role = $this->returnRole();
         if ($role == 2) {
-            $shopRepository = new ShopRepository();
             $view = new View('admin/index');
-            $view->products = $shopRepository->readAll();
             $view->display($role);
         } else {
             header('Location: /');
         }
     }
 
+    /*  newProduct()
+        Funktion zum Erfassen eines neuen Artikels. Benötigt das ShopRepository um zu erstellen. 
+    */
     public function newProduct()
     {
         $role = $this->returnRole();
@@ -50,6 +55,10 @@ class AdminController extends Controller
         }
     }
 
+    /*  product()
+        Funktion zum Anzeigen eines einzelnen Produktes.
+    */
+
     public function product()
     {
         $role = $this->returnRole();
@@ -68,6 +77,10 @@ class AdminController extends Controller
         }
     }
 
+    /*  adminProducts()
+        Funktion zum darstellen der Produkte als Admin
+    */
+
     public function adminProducts()
     {
         $role = $this->returnRole();
@@ -80,6 +93,10 @@ class AdminController extends Controller
             header('Location:/');
         }
     }
+
+    /*  saveProduct()
+        Funktion zum speichern eines Produktes als Admin.
+    */
 
     public function saveProduct()
     {
@@ -100,6 +117,10 @@ class AdminController extends Controller
             header('Location:/');
         }
     }
+
+    /*  delete()
+        Funktion zum löschen eines Produktes als Admin.
+    */
 
     public function delete() {
         $role = $this->returnRole();

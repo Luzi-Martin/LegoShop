@@ -14,6 +14,9 @@
                             <a class="dropdown-item" href="/user/doLogout">Abmelden</a>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/default/info">Info <span class="sr-only"></span></a>
+                    </li>
 
                 </ul>
             </div>

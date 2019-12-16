@@ -14,17 +14,24 @@ class ShoppingCartRepository extends Repository
 {
     protected $tableName = 'shoppingcart';
 
+    /*  addToShoppingCart()
+        Funktion zum Hinzufügen eines Produktes zum Warenkorb.
+    */
 
     public function addToShoppingCart($userId, $productId) {
         $query = "INSERT INTO $this->tableName (product_id, user_id) VALUES (?, ?)";
 
+        // Datenbankverbindung anfordern und, das Query "preparen" (vorbereiten)
+        // und die Parameter "binden"
         $statement = ConnectionHandler::getConnection()->prepare($query);
         $statement->bind_param('ii', $productId, $userId);
 
+        // Das Statement absetzen
         if (!$statement->execute()) {
             throw new Exception($statement->error);
         }
 
+        // Resultat der Abfrage holen
         return $statement->insert_id;
     }
 

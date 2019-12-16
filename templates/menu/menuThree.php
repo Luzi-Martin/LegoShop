@@ -20,6 +20,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/adminProducts">Admin Shop</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/default/info">Info <span class=""></span></a>
+                    </li>
                 </ul>
             </div>
         </nav>

@@ -2,6 +2,10 @@
 
 namespace App\Validation;
 
+/*
+    Klasse die statische Methoden zur Überpfrüfung diverser Formate enthält.
+*/
+
 class PatternHandler {
 
     public static function isEmail($email) {

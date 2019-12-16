@@ -103,6 +103,9 @@ class UserRepository extends Repository
 
     }
 
+    /*
+        Funktion zum Updaten eines Users nach Id
+    */
     public function updateById($id, $firstName, $lastName, $email, $street, $house_nr, $location_id) {
         $query = "UPDATE {$this->tableName} SET firstName = ?, lastName = ?, email = ?, street = ?, house_nr = ?, location_id = ? WHERE id = ?";
 
@@ -116,6 +119,10 @@ class UserRepository extends Repository
         }
     }
 
+
+    /*
+        Funktion zum Updaten eines Passwortes nach Id
+    */
     public function updatePwdById($id, $password){
         $query = "UPDATE {$this->tableName} SET password = sha2(?,256) WHERE id = ?";
 
