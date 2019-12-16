@@ -35,6 +35,16 @@
                             </div>
                         </div>
                     </form>
+                    <form action="/admin/delete" method="post" class="col">
+                        <div class="row mt-5">
+                            <div class="col-md-4">
+                                <?php
+                                echo '<input type="hidden" name="id" value="' . $product->id . '">';
+                                ?>
+                                <button type="submit" class="btn btn-primary">Löschen</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
