@@ -24,7 +24,7 @@
                         <a class="nav-link" href="/default/info">Info <span class=""></span></a>
                     </li>
                 </ul>
-            </div>
-        </nav>
-    </header>
-<div class="main">
+                </div>
+                </nav>
+                </header>
+                <div class="main">
