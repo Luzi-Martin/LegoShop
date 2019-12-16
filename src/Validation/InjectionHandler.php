@@ -2,6 +2,11 @@
 
 namespace App\Validation;
 
+/*
+    Klasse die Statische Methoden zur Überprüfung auf injections und Scripts enthält.
+*/
+
+
 class InjectionHandler {
     public static function hasInjections($fields) {
         try {
