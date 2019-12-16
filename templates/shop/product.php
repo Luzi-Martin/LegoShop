@@ -39,7 +39,7 @@
                     <div class="row margin-top-4">
                         <div class="col">
                             <?php
-                                echo '<a href="addToShoppingCart?id=' . $product->id. '" name="add" class="btn btn-primary">Zu Warenkorb hinzufüegen</a>';
+                                echo '<a href="addToShoppingCart?id=' . $product->id. '" name="add" class="btn btn-primary">Zu Warenkorb hinzufügen</a>';
                             ?>
                         </div>
                     </div>
