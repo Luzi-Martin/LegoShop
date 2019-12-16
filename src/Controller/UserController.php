@@ -91,7 +91,10 @@ class UserController extends Controller
             /// Injection Handling
             $fields = array($firstName, $lastName, $email, $password, $street, $house_nr, $location_id);
 
-            if (InjectionHandler::hasInjections($fields)) { return; }
+            if (InjectionHandler::hasInjections($fields)) { 
+                header('Location:/');
+                return; 
+            }
 
             $userRepository = new UserRepository();
             $userRepository->create($firstName, $lastName, $email, $password, $street, $house_nr, $location_id);
@@ -167,7 +170,10 @@ class UserController extends Controller
         /// Injection Handling
         $fields = array($firstName, $lastName, $email, $street, $house_nr, $location_id);
 
-        if (InjectionHandler::hasInjections($fields)) { return; }
+        if (InjectionHandler::hasInjections($fields)) { 
+            header('Location:/');
+            return; 
+        }
 
         $userRepository->updateById($id, $firstName, $lastName, $email, $street, $house_nr, $location_id);
 
@@ -200,7 +206,10 @@ class UserController extends Controller
         //Injection Handling
         $fields = array($firstNewPassword, $secondNewPassword);
 
-        if(InjectionHandler::hasInjections($fields)){ return; }
+        if(InjectionHandler::hasInjections($fields)){
+            header('Location:/');
+            return; 
+        }
         if($firstNewPassword == $secondNewPassword){
             $userRepository->updatePwdById($id, $firstNewPassword);
             echo "Daten erfolgreich geändert";
