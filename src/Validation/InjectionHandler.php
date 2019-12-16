@@ -8,10 +8,11 @@ class InjectionHandler {
             if(is_array($fields)) {
                 foreach($fields as $field) {
                     if (preg_match('/(<|>|"|\')/',strval($field))) {
+                        
                         return true;
                     }
-                    return false;
                 }
+                return false;
             } else {
                 if (preg_match('/(<|>|"|\')/',strval($fields))) {
                     return true;
