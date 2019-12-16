@@ -13,6 +13,7 @@ use App\View\View;
  */
 class UserController extends Controller
 {
+    //Standard startseite des Users
     public function index()
     {
 
@@ -22,6 +23,7 @@ class UserController extends Controller
         $view->display($this->returnRole());
     }
 
+    //Erstellt die View zum Login
     public function login()
     {
         $view = new View('user/login');
@@ -30,6 +32,11 @@ class UserController extends Controller
         $view->display($this->returnRole());
     }
 
+    /*  Kriegt die Userdaten aus dem Frontend
+        Validiert anschliessend die Daten
+        Setzt die Rolle des Users
+        Loggt dich ein und leitet dich auf die Startseite weiter
+    */
     public function doLogin()
     {
         session_start();
@@ -55,18 +62,16 @@ class UserController extends Controller
             $_SESSION['loggedin'] = true;
             $_SESSION['isAdmin'] = $isAdmin;
             $_SESSION['id'] = $id;
-            if($isAdmin == 1){
-                $_SESSION['role'] = 2;
-            }else if($isAdmin == 0){
-                $_SESSION['role'] == 1;
-            }else{
-                $_SESSION['role'] == 0;
-            }
+            if($isAdmin == 1){ $_SESSION['role'] = 2; }
+            else if($isAdmin == 0){ $_SESSION['role'] == 1; }
+            else{ $_SESSION['role'] == 0; }
             
            header('Location: /');
         }
     }
 
+    
+    //Erstellt die View zur Registration
     public function registration()
     {
         $locationsRepository = new LocationRepository();
@@ -77,6 +82,12 @@ class UserController extends Controller
         $view->locations = $locationsRepository->readAll();
         $view->display($this->returnRole());
     }
+
+    /*  Kriegt die Userdaten aus dem Frontend
+        Validiert anschliessend die Daten
+        Checkt ob die Userdaten aus einem Script bestehen oder Injections beinhalten
+        Erstellt den User und leitet dich auf die Startseite weiter
+    */
     public function doRegistrate()
     {
         if (isset($_POST['send'])) {
@@ -101,24 +112,11 @@ class UserController extends Controller
         }
         header('Location: /');
     }
-
-    public function create()
-    {
-        $view = new View('user/create');
-        $view->title = 'Benutzer erstellen';
-        $view->heading = 'Benutzer erstellen';
-        $view->display($this->returnRole());
-    }
-
-    public function delete()
-    {
-        $userRepository = new UserRepository();
-        $userRepository->deleteById($_GET['id']);
-
-        // Anfrage an die URI /user weiterleiten (HTTP 302)
-        header('Location: /user');
-    }
-
+    
+    /*  Löscht die ID und die Email des Users aus der Session
+        setzt die Role und das Attribut 'loggedin' auf null, damit die nicht leer sind und Probleme erzeugen
+        Zerstört die Session und leitet dich weiter
+    */
     public function doLogout()
     {
         session_start();
@@ -131,6 +129,7 @@ class UserController extends Controller
         header('Location: /');
     }
 
+    //Erstellt die View zum Logout
     public function logout()
     {
         $view = new View('user/logout');
@@ -139,6 +138,8 @@ class UserController extends Controller
         $view->display($this->returnRole());
     }
 
+    
+    //Erstellt die View zur Bearbetung eines Users
     public function edit(){
         $role = $this->returnRole();
         if($role != 0){
@@ -155,6 +156,12 @@ class UserController extends Controller
             header('Location: /');
         }
     }
+
+    /*  Kriegt die Userdaten aus dem Frontend
+        Checkt ob die Userdaten aus einem Script bestehen oder Injections beinhalten
+        Updated den User mit den neuen Daten
+        Leitet auf Startseite weiter
+    */
 
     public function doEdit(){
         session_start();
@@ -178,9 +185,9 @@ class UserController extends Controller
         $userRepository->updateById($id, $firstName, $lastName, $email, $street, $house_nr, $location_id);
 
         header('Location: /');
-        echo "Daten erfolgreich geändert";
     }
 
+    //Erstellt die View zur Bearbetung des Passworts eines Users
     public function editPassword(){
         $role = $this->returnRole();
         if($role != 0){
@@ -195,6 +202,13 @@ class UserController extends Controller
         }
     }
 
+    /*  Kriegt die Userdaten aus dem Frontend
+        Checkt ob die Userdaten aus einem Script bestehen oder Injections beinhalten
+        Schaut, ob die zwei eingegebenen Passwörter gleich sind
+        Falls nicht, weiterleitung auf die Passwortänderungsseite
+        Updated den User mit dem neuen Passwort
+        Leitet auf Startseite weiter
+    */
     public function doEditPassword(){
         
         session_start();
