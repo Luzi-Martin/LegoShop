@@ -15,10 +15,15 @@ class ShopController extends Controller
 {
     public function index()
     {
+        $role = $this->returnRole();
+        if($role != 0) {
         $shopRepository = new ShopRepository();
         $view = new View('shop/index');
         $view->products = $shopRepository->readAll();
-        $view->display($this->returnRole());
+        $view->display($role);
+        } else {
+            header('Location:/');
+        }
     }
 
     public function product()
@@ -54,8 +59,13 @@ class ShopController extends Controller
         }
         
         $shoppingCartRepository = new ShoppingCartRepository();
-        $view = new View('shop/shoppingCart');
+        if($role != 0) {
+            $view = new View('shop/shoppingCart');
         $view->products = $shoppingCartRepository->getMyProducts($_SESSION['id']);
         $view->display($role);
+        } else {
+            header('Location:/');
+        }
+        
     }
 }

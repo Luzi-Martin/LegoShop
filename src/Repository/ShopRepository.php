@@ -30,10 +30,12 @@ class ShopRepository extends Repository
     }
 
     public function updateById($id, $price, $name, $description) {
-        $query = "UPDATE $this->tableName SET  (price = ?, name = ?, description = ?) WHERE id = ?";
+        $query = "UPDATE $this->tableName SET  price = ?, name = ?, description = ? WHERE id = ?";
+
+        echo $id.$price. $name. $description;
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('fssi', $price, $name, $description, $id);
+        $statement->bind_param('dssi', $price, $name, $description, $id);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);

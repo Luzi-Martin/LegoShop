@@ -17,6 +17,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/index">Neuer Artikel</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/adminProducts">Admin Shop</a>
+                    </li>
                 </ul>
             </div>
         </nav>
