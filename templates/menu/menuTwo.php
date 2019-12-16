@@ -8,7 +8,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mein Profil</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/user/bearbeiten">Profil Bearbeiten</a>
+                            <a class="dropdown-item" href="/user/edit">Profil Bearbeiten</a>
                             <a class="dropdown-item" href="/shop/shoppingCart">Warenkorb</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="/user/doLogout">Abmelden</a>

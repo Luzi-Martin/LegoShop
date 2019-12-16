@@ -34,13 +34,13 @@ class UserRepository extends Repository
      * 
      * @throws Exception falls das Ausführen des Statements fehlschlägt
      */
-    public function create($firstName, $lastName, $email, $password, $street, $hous_nr, $location_id)
+    public function create($firstName, $lastName, $email, $password, $street, $house_nr, $location_id)
     {
         $false = 0;
         $query = "INSERT INTO $this->tableName (firstName, lastName, email, password, admin, street, house_nr, location_id) VALUES (?, ?, ?, sha2(?,256), ?, ?, ?, ?)";
 
         $statement = ConnectionHandler::getConnection()->prepare($query);
-        $statement->bind_param('ssssissi', $firstName, $lastName, $email, $password,  $false, $street, $hous_nr, $location_id);
+        $statement->bind_param('ssssissi', $firstName, $lastName, $email, $password,  $false, $street, $house_nr, $location_id);
 
         if (!$statement->execute()) {
             throw new Exception($statement->error);
@@ -101,5 +101,18 @@ class UserRepository extends Repository
         // Den gefundenen Datensatz zurückgeben
         return $row->admin;
 
+    }
+
+    public function updateById($id, $firstName, $lastName, $email, $street, $house_nr, $location_id) {
+        $query = "UPDATE {$this->tableName} SET firstName = ?, lastName = ?, email = ?, street = ?, house_nr = ?, location_id = ? WHERE id = ?";
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('ssssiii', $firstName, $lastName, $email, $street, $house_nr, $location_id, $id);
+
+        $statement->execute();
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
     }
 }

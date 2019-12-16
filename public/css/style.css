@@ -10,7 +10,7 @@ html {
 
 body {
   margin-bottom: 60px;
-  font-family: 'Helvetica';
+  font-family: Helvetica, Arial, "Times New Roman";
 }
 
 body > .container {
@@ -51,4 +51,8 @@ body > .container {
   width: 32%;
   margin-right: 13px;
   margin-bottom: 10px;
+}
+
+.nav-item.dropdown {
+  align-content: flex-end;
 }
