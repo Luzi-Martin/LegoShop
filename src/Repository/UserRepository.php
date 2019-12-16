@@ -115,4 +115,17 @@ class UserRepository extends Repository
             throw new Exception($statement->error);
         }
     }
+
+    public function updatePwdById($id, $password){
+        $query = "UPDATE {$this->tableName} SET password = sha2(?,256) WHERE id = ?";
+
+        $statement = ConnectionHandler::getConnection()->prepare($query);
+        $statement->bind_param('si',$password,$id);
+
+        $statement->execute();
+
+        if (!$statement->execute()) {
+            throw new Exception($statement->error);
+        }
+    }
 }

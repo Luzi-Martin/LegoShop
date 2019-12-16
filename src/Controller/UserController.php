@@ -91,9 +91,7 @@ class UserController extends Controller
             /// Injection Handling
             $fields = array($firstName, $lastName, $email, $password, $street, $house_nr, $location_id);
 
-            if (InjectionHandler::hasInjections($fields)) {
-                return;
-            }
+            if (InjectionHandler::hasInjections($fields)) { return; }
 
             $userRepository = new UserRepository();
             $userRepository->create($firstName, $lastName, $email, $password, $street, $house_nr, $location_id);
@@ -169,9 +167,7 @@ class UserController extends Controller
         /// Injection Handling
         $fields = array($firstName, $lastName, $email, $street, $house_nr, $location_id);
 
-        if (InjectionHandler::hasInjections($fields)) {
-            return;
-        }
+        if (InjectionHandler::hasInjections($fields)) { return; }
 
         $userRepository->updateById($id, $firstName, $lastName, $email, $street, $house_nr, $location_id);
 
@@ -194,6 +190,25 @@ class UserController extends Controller
     }
 
     public function doEditPassword(){
+        
+        session_start();
+        $userRepository = new UserRepository();  
+        $id = $_SESSION['id'];
+        $firstNewPassword = $_POST['firstNewPwd'];
+        $secondNewPassword = $_POST['secondNewPwd'];
+        
+        //Injection Handling
+        $fields = array($firstNewPassword, $secondNewPassword);
+
+        if(InjectionHandler::hasInjections($fields)){ return; }
+        if($firstNewPassword == $secondNewPassword){
+            $userRepository->updatePwdById($id, $firstNewPassword);
+            echo "Daten erfolgreich geändert";
+            header('Location: /');
+        }else{
+            header('Location: /user/editPassword');
+            echo "Passwörter stimmen nicht überein";
+        }
 
     }
 }

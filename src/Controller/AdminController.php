@@ -32,9 +32,7 @@ class AdminController extends Controller
 
             $fields = array($_POST['lprice'], $_POST['lname'], $_POST['ldescription']);
 
-            if (InjectionHandler::hasInjections($fields)) {
-                return;
-            }
+            if (InjectionHandler::hasInjections($fields)) { return; }
 
             if (isset($_POST['add'])) {
                 $price = $_POST['lprice'];
@@ -81,9 +79,7 @@ class AdminController extends Controller
         if ($role == 2) {
             $fields = array($_POST['lprice'], $_POST['lname'], $_POST['ldescription'],$_POST['id']);
 
-            if (InjectionHandler::hasInjections($fields)) {
-                return;
-            }
+            if (InjectionHandler::hasInjections($fields)) { return; }
 
             echo $_POST['id']. $_POST['lprice']. $_POST['lname']. $_POST['ldescription']. ' ';
 

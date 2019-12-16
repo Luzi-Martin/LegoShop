@@ -53,7 +53,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-5 mt-2">
-                <a href="user/editPassword"<button type="submit" class="btn btn-primary">Passwort ändern</button></a>
+                <a href="/user/editPassword" class="btn btn-primary">Passwort ändern</a>
 			</div>
         </div>
 	</form>
