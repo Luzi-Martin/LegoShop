@@ -18,7 +18,7 @@ class AdminController extends Controller
             $shopRepository = new ShopRepository();
             $view = new View('admin/index');
             $view->products = $shopRepository->readAll();
-            $view->display($this->returnRole());
+            $view->display($role);
         } else {
             header('Location: /');
         }
@@ -33,6 +33,7 @@ class AdminController extends Controller
             $fields = array($_POST['lprice'], $_POST['lname'], $_POST['ldescription']);
 
             if (InjectionHandler::hasInjections($fields)) {
+                header('Location:/');
                 return;
             }
 
@@ -55,7 +56,12 @@ class AdminController extends Controller
         if ($role == 2 && isset($_GET['id'])) {
             $shopRepository = new ShopRepository();
             $view = new View('admin/product');
-            $view->product = $shopRepository->readById($_GET['id']);
+            $product = $shopRepository->readById($_GET['id']);
+            if(!isset($product)) {
+                header('Location:/admin/adminProducts');
+                return;
+            }
+            $view->product = $product;
             $view->display($role);
         } else {
             header('Location:/');
@@ -82,10 +88,9 @@ class AdminController extends Controller
             $fields = array($_POST['lprice'], $_POST['lname'], $_POST['ldescription'],$_POST['id']);
 
             if (InjectionHandler::hasInjections($fields)) {
+                header('Location:/');
                 return;
             }
-
-            echo $_POST['id']. $_POST['lprice']. $_POST['lname']. $_POST['ldescription']. ' ';
 
             $shopRepository = new ShopRepository();
             $shopRepository->updateById($_POST['id'], $_POST['lprice'], $_POST['lname'], $_POST['ldescription']);
@@ -93,6 +98,21 @@ class AdminController extends Controller
             header('Location:/admin/adminProducts');
         } else {
             header('Location:/');
+        }
+    }
+
+    public function delete() {
+        $role = $this->returnRole();
+
+        if ($role == 2 && isset($_POST['id'])) {
+            if (InjectionHandler::hasInjections($_POST['id'])) {
+                header('Location:/');
+                return;
+            }
+
+            $shopRepository = new ShopRepository();
+            $shopRepository->deleteById($_POST['id']);
+            header('Location:/admin/adminProducts');
         }
     }
 }
