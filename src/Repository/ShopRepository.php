@@ -14,7 +14,9 @@ class ShopRepository extends Repository
 {
     protected $tableName = 'product';
 
-
+    /*
+        Funktion zum erstellen eines Produktes
+    */
     public function create($price, $name, $description)
     {
         $query = "INSERT INTO $this->tableName (price, name, description) VALUES (?, ?, ?)";
@@ -29,6 +31,10 @@ class ShopRepository extends Repository
         return $statement->insert_id;
     }
 
+
+    /*
+        Funktion zum updaten eines Produktes nach id
+    */
     public function updateById($id, $price, $name, $description) {
         $query = "UPDATE $this->tableName SET  price = ?, name = ?, description = ? WHERE id = ?";
         $statement = ConnectionHandler::getConnection()->prepare($query);
