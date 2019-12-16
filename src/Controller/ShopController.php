@@ -28,9 +28,7 @@ class ShopController extends Controller
 
     public function product()
     {
-        if(InjectionHandler::hasInjections($_GET['id'])) {
-            return;
-        }
+        if(InjectionHandler::hasInjections($_GET['id'])) { return; }
 
         $shopRepository = new ShopRepository();
         $view = new View('shop/product');
@@ -55,9 +53,7 @@ class ShopController extends Controller
 
     public function shoppingCart() {
         $role = $this->returnRole();
-        if(isset($_SESSION['id']) && InjectionHandler::hasInjections($_SESSION['id'])) {
-            return;
-        }
+        if(isset($_SESSION['id']) && InjectionHandler::hasInjections($_SESSION['id'])) { return; }
         
         $shoppingCartRepository = new ShoppingCartRepository();
         if($role != 0) {
